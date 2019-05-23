@@ -80,9 +80,7 @@ class Debugger(object):
       bg * (1 - trans)).astype(np.uint8)
   
   def show_img(self, pause = False, imgId = 'default'):
-    matplotlib.pyplot.imshow(self.imgs[imgId])
-    matplotlib.pyplot.show()
-    print('no')
+    cv2.imshow('img',self.imgs[imgId])
     #name = str(random.randint(1,2100))+'.png'
     #cv2.imwrite(name,self.imgs[imgId])
     if pause:
@@ -221,8 +219,7 @@ class Debugger(object):
     if not self.ipynb:
       for i, v in self.imgs.items():
         matplotlib.pyplot.imshow(v)
-        matplotlib.pyplot.show()
-        print('yes')
+        matplotlib.pyplot.show();
         #name = str(random.randint(1,2100))+'.png'
         #cv2.imwrite(name,v)
       if cv2.waitKey(0 if pause else 1) == 27:
