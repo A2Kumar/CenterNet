@@ -7,6 +7,7 @@ import _init_paths
 import os
 import cv2
 
+
 from opts import opts
 from detectors.detector_factory import detector_factory
 
@@ -26,7 +27,8 @@ def demo(opt):
     detector.pause = False
     while True:
         _, img = cam.read()
-        cv2.imshow('input', img)
+        plt.imshow(img)
+        plt.show()
         ret = detector.run(img)
         time_str = ''
         for stat in time_stats:
