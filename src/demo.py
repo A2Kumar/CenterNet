@@ -28,8 +28,7 @@ def demo(opt):
     detector.pause = False
     while True:
         _, img = cam.read()
-        matplotlib.pyplot.imshow(img)
-        print(img)
+        #matplotlib.pyplot.imshow(img)
         ret = detector.run(img)
         time_str = ''
         for stat in time_stats:
