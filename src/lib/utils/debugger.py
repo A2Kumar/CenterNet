@@ -4,7 +4,6 @@ from __future__ import print_function
 import matplotlib
 import numpy as np
 import cv2
-from IPython.display import Image
 import random
 from .ddd_utils import compute_box_3d, project_to_image, draw_box_3d
 
@@ -82,8 +81,6 @@ class Debugger(object):
   
   def show_img(self, pause = False, imgId = 'default'):
     cv2.imshow('img',self.imgs[imgId])
-    #name = str(random.randint(1,2100))+'.png'
-    #cv2.imwrite(name,self.imgs[imgId])
     if pause:
       cv2.waitKey()
   
@@ -219,12 +216,12 @@ class Debugger(object):
   def show_all_imgs(self, pause=False, time=0):
     if not self.ipynb:
       for i, v in self.imgs.items():
-        #self.plt.imshow(v)
-        Image(v)
+        self.plt.imshow(v)
+        cv2.imwrite('{}'.format(i),v)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
-      #self.plt.show()
+      self.plt.show()
     else:
       self.ax = None
       nImgs = len(self.imgs)
