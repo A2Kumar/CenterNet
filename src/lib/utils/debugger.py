@@ -81,8 +81,10 @@ class Debugger(object):
   
   def show_img(self, pause = False, imgId = 'default'):
     matplotlib.pyplot.imshow(self.imgs[imgId])
-    name = str(random.randint(1,2100))+'.png'
-    cv2.imwrite(name,self.imgs[imgId])
+    matplotlib.pyplot.show()
+    print('no')
+    #name = str(random.randint(1,2100))+'.png'
+    #cv2.imwrite(name,self.imgs[imgId])
     if pause:
       cv2.waitKey()
   
@@ -219,8 +221,10 @@ class Debugger(object):
     if not self.ipynb:
       for i, v in self.imgs.items():
         matplotlib.pyplot.imshow(v)
-        name = str(random.randint(1,2100))+'.png'
-        cv2.imwrite(name,v)
+        matplotlib.pyplot.show()
+        print('yes')
+        #name = str(random.randint(1,2100))+'.png'
+        #cv2.imwrite(name,v)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
@@ -234,12 +238,8 @@ class Debugger(object):
         fig.add_subplot(1, nImgs, i + 1)
         if len(v.shape) == 3:
           self.plt.imshow(cv2.cvtColor(v, cv2.COLOR_BGR2RGB))
-          name = str(random.randint(1,2100))+'.png'
-          cv2.imwrite(name,v)
         else:
           self.plt.imshow(v)
-          name = str(random.randint(1,2100))+'.png'
-          cv2.imwrite(name,v)
       self.plt.show()
 
   def save_img(self, imgId='default', path='./cache/debug/'):
