@@ -6,6 +6,7 @@ import pickle
 import json
 import numpy as np
 import cv2
+import matplotlib
 DATA_PATH = '../../data/kitti/'
 DEBUG = False
 # VAL_PATH = DATA_PATH + 'training/label_val/'
@@ -140,7 +141,7 @@ for SPLIT in SPLITS:
           print('pt_3d', pt_3d)
           print('location', location)
       if DEBUG:
-        cv2.imshow('image', image)
+        matplotlib.pyplot.imshow(image)
         cv2.waitKey()
 
 

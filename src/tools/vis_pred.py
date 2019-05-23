@@ -3,6 +3,7 @@ from pycocotools.cocoeval import COCOeval
 import sys
 import cv2
 import numpy as np
+import matplotlib
 import pickle
 IMG_PATH = '../../data/coco/val2017/'
 ANN_PATH = '../../data/coco/annotations/instances_val2017.json'
@@ -92,9 +93,9 @@ if __name__ == '__main__':
         cat_id = pred['category_id']
         if sc > 0.2:
           pred_img = add_box(pred_img, bbox, sc, cat_id)
-      cv2.imshow('pred{}'.format(k), pred_img)
+      matplotlib.pyplot.imshow(pred_img)
       # cv2.imwrite('vis/{}_pred{}.png'.format(i, k), pred_img)
-    cv2.imshow('gt', gt_img)
+    matplotlib.pyplot.imshow(gt_img)
     # cv2.imwrite('vis/{}_gt.png'.format(i), gt_img)
     cv2.waitKey()
   # coco_eval.evaluate()

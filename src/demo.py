@@ -6,6 +6,7 @@ import _init_paths
 
 import os
 import cv2
+import matplotlib 
 
 
 from opts import opts
@@ -27,8 +28,7 @@ def demo(opt):
     detector.pause = False
     while True:
         _, img = cam.read()
-        plt.imshow(img)
-        plt.show()
+        matplotlib.pyplot.imshow(img)
         ret = detector.run(img)
         time_str = ''
         for stat in time_stats:

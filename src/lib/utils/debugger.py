@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
+import matplotlib
 import numpy as np
 import cv2
 from .ddd_utils import compute_box_3d, project_to_image, draw_box_3d
@@ -79,7 +79,7 @@ class Debugger(object):
       bg * (1 - trans)).astype(np.uint8)
   
   def show_img(self, pause = False, imgId = 'default'):
-    cv2.imshow('{}'.format(imgId), self.imgs[imgId])
+    matplotlib.pyplot.imshow(self.imgs[imgId])
     if pause:
       cv2.waitKey()
   
@@ -215,7 +215,7 @@ class Debugger(object):
   def show_all_imgs(self, pause=False, time=0):
     if not self.ipynb:
       for i, v in self.imgs.items():
-        cv2.imshow('{}'.format(i), v)
+        matplotlib.pyplot.imshow(v)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
