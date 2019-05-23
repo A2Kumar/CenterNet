@@ -218,13 +218,13 @@ class Debugger(object):
   def show_all_imgs(self, pause=False, time=0):
     if not self.ipynb:
       for i, v in self.imgs.items():
-        matplotlib.pyplot.imshow(v)
-        matplotlib.pyplot.show();
+        self.plt.imshow(v)
         #name = str(random.randint(1,2100))+'.png'
         #cv2.imwrite(name,v)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
+      self.plt.show()
     else:
       self.ax = None
       nImgs = len(self.imgs)
