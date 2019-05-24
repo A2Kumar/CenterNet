@@ -89,7 +89,5 @@ class CtdetDetector(BaseDetector):
       for bbox in results[j]:
         if bbox[4] > self.opt.vis_thresh:
           debugger.add_coco_bbox(bbox[:4], j - 1, bbox[4], img_id='ctdet')
+    debugger.save_all_imgs()
     debugger.show_all_imgs(pause=self.pause)
-    matplotlib.pyplot.imshow(image)
-    matplotlib.pyplot.imshow(results)
-    matplotlib.pyplot.show()
