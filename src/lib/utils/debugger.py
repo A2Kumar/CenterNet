@@ -217,7 +217,6 @@ class Debugger(object):
     if not self.ipynb:
       for i, v in self.imgs.items():
         self.plt.imshow(v)
-        cv2.imwrite('{}{}.png'.format(prefix, i),v)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
