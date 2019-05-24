@@ -21,7 +21,6 @@ def demo(opt):
   opt.debug = max(opt.debug, 1)
   Detector = detector_factory[opt.task]
   detector = Detector(opt)
-  print(detector)
 
   if opt.demo == 'webcam' or \
     opt.demo[opt.demo.rfind('.') + 1:].lower() in video_ext:
@@ -49,6 +48,7 @@ def demo(opt):
       image_names = [opt.demo]
     
     for (image_name) in image_names:
+      print(image_name)
       ret = detector.run(image_name)
       time_str = ''
       for stat in time_stats:
