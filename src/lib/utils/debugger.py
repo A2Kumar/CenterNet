@@ -216,11 +216,11 @@ class Debugger(object):
   def show_all_imgs(self, pause=False, time=0):
     if not self.ipynb:
       for i, v in self.imgs.items():
-        self.plt.imshow(v)
+        #self.plt.imshow(v)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
-      self.plt.show()
+      #self.plt.show()
     else:
       self.ax = None
       nImgs = len(self.imgs)
