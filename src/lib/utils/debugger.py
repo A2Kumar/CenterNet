@@ -217,6 +217,7 @@ class Debugger(object):
     if not self.ipynb:
       for i, v in self.imgs.items():
         self.plt.imshow(v)
+      self.save_all_imgs(genID=True)
       if cv2.waitKey(0 if pause else 1) == 27:
         import sys
         sys.exit(0)
@@ -241,11 +242,11 @@ class Debugger(object):
   def save_all_imgs(self, path='./cache/debug/', prefix='', genID=False):
     if genID:
       try:
-        idx = int(np.loadtxt(path + '/id.txt'))
+        idx = int(np.loadtxt(path + 'id.txt'))
       except:
         idx = 0
       prefix=idx
-      np.savetxt(path + '/id.txt', np.ones(1) * (idx + 1), fmt='%d')
+      np.savetxt(path + 'id.txt', np.ones(1) * (idx + 1), fmt='%d')
     for i, v in self.imgs.items():
       cv2.imwrite(path + '/{}{}.png'.format(prefix, i), v)
 

@@ -138,10 +138,6 @@ class BaseDetector(object):
 
     if self.opt.debug >= 1:
       self.show_results(debugger, image, results)
-    print('results')
-    matplotlib.pyplot.imshow(results)
-    print('dets')
-    matplotlib.pyplot.imshow(dets)
     return {'results': results, 'tot': tot_time, 'load': load_time,
             'pre': pre_time, 'net': net_time, 'dec': dec_time,
             'post': post_time, 'merge': merge_time}
