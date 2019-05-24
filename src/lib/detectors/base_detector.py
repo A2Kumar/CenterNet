@@ -7,7 +7,7 @@ import numpy as np
 from progress.bar import Bar
 import time
 import torch
-
+import matplotlib
 from models.model import create_model, load_model
 from utils.image import get_affine_transform
 from utils.debugger import Debugger
@@ -138,12 +138,10 @@ class BaseDetector(object):
 
     if self.opt.debug >= 1:
       self.show_results(debugger, image, results)
-    print('output')
-    print(output)
     print('results')
-    print(results)
+    matplotlib.pyplot.imshow(results)
     print('dets')
-    print(dets)
+    matplotlib.pyplot.imshow(dets)
     return {'results': results, 'tot': tot_time, 'load': load_time,
             'pre': pre_time, 'net': net_time, 'dec': dec_time,
             'post': post_time, 'merge': merge_time}
