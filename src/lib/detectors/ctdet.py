@@ -31,7 +31,7 @@ class CtdetDetector(BaseDetector):
         hm = (hm[0:1] + flip_tensor(hm[1:2])) / 2
         wh = (wh[0:1] + flip_tensor(wh[1:2])) / 2
         reg = reg[0:1] if reg is not None else None
-      torch.cuda.synchronize()
+      #torch.cuda.synchronize()
       forward_time = time.time()
       dets = ctdet_decode(hm, wh, reg=reg, K=self.opt.K)
       
